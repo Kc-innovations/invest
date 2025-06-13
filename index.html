@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Navbar</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<!-- header -->
+<div style="background-color: #222; position:sticky;">
+  <nav class="navbar">
+    <div class="logo">FLUX FX</div>
+
+    <!-- Trigger Button -->
+  <div>
+    <button class="button" onclick="openModal('signupModal')">Sign-up</button>
+    <button class="button" onclick="openModal('loginModal')"> Login</button>
+  </div>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="menu-toggle" id="menu-toggle">
+      ☰
+    </div>
+  </nav>
+
+  <!-- translator-->
+   <div style="display: relative;">
+    <div id="google_translate_element"></div>
+   </div>
+
+  
+<!-- SIGNUP MODAL -->
+<div id="signupModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('signupModal')">&times;</span>
+    <h3>Sign Up</h3>
+    <form id="signupForm" action="connect.php" method="post">
+      <input type="text" id="firstname" name="firstname" placeholder="First Name" required />
+      <input type="text" id="lastname" name="lastname" placeholder="Last Name" required />
+      <input type="text" id="country" name="country" placeholder="nationality">
+      <input type="phone" id="phone" name="phone" placeholder="Phone Number" required />
+      <input type="email" id="email" name="email" placeholder="Email" required />
+      <input type="password" id="password" name="password" placeholder="Password" required />
+      <input name="confirmPassword" type="password" placeholder="Confirm Password" required />
+      <div class="error" id="signupError"></div>
+      <input class="button" type="submit" value="Create Account">
+    </form>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('loginModal')">&times;</span>
+    <h3>Login</h3>
+    <form id="loginForm">
+      <input name="email" type="email" placeholder="Email" required />
+      <input name="password" type="password" placeholder="Password" required />
+      <div class="link" onclick="alert('Redirect to recovery')">Forgot Password?</div>
+      <div class="error" id="loginError"></div>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</div>
+
+</div>
+
+
+<div style="position:fixed; bottom:10px; right:0; width:fit-content; padding: 5px; background-color: white; border-radius: 10px; color: green; text-decoration: none;">
+  <a href="http://Wa.me/+12134924288" style="font-size:20px; color: green;">
+    <i class="fa fa-whatsapp" style="font-size:30px;"></i> Chat with us
+  </a>
+</div>
+
+<!--<video autoplay muted loop playsinline id="bg-video">
+  <source src="vidtrend.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>-->
+
+<div class="con">
+  
+  <h1 style="margin-bottom: 20px; text-align: center;">About us</strong></h1>
+
+  <figure class="fig">
+    <img src="01.jpg" class="image">
+    <figcaption ></figcaption>
+  </figure>
+
+  <div>
+    <p style="text-align:justify;">At FLUX TRADE FX, we are committed to empowering individuals and institutions to grow their wealth through smart, strategic investment solutions. With years of experience in the financial markets and a deep understanding of global trends, we provide tailored investment opportunities designed to meet the unique goals of each client. Our team combines expertise, integrity, and innovation to navigate the complexities of today’s economy and maximize your investment potential.</p>
+    <br>
+    <button  onclick="openModal('signupModal')" style="text-align:center; color: rgb(1, 1, 34);" > <h1> Get started now</h1></button>
+  </div>
+
+</div>
+
+
+<!-- main body -->
+<main>
+    <div class="card">
+      <h3>Vision</h3>
+      <p>Our mission is to deliver exceptional investment performance by leveraging thorough research, disciplined strategies, and a client-focused approach. We strive to build lasting relationships based on trust and transparency, helping our clients achieve financial security and prosperity through personalized investment solutions.</p>
+    </div>
+    <div class="card">
+      <h3>Mission</h3>
+      <ul style="margin-left: 10px;">
+        <li>Trades and coaching
+        <li>Innovation: We embrace new technologies and ideas to stay ahead in a dynamic market.</li>
+        <li>Sustainability: We are committed to responsible investing that supports long-term economic and social well-being.</li>
+        <li>Transparency: We communicate openly and clearly, ensuring clients are fully informed.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Core valus</h3>
+      <ul style="margin-left: 10px;">
+        <li>Integrity: We uphold the highest ethical standards in every decision and interaction.</li>
+        <li>Innovation: We embrace new technologies and ideas to stay ahead in a dynamic market.</li>
+        <li>Sustainability: We are committed to responsible investing that supports long-term economic and social well-being.</li>
+        <li>Transparency: We communicate openly and clearly, ensuring clients are fully informed.</li>
+      </ul>
+    </div>
+  </main>
+
+  <div class="youtube">
+    <!--<div class="ban" style="background-color: green;">
+        <h2>MEMBERSHIP</strong></h2>
+          <div id="counter">0</div> 
+    </div> -->
+    <h4>learn about cryto trading and investment</h4>
+    <iframe width="" height="315" src="https://www.youtube.com/embed/FAUlGhNYNyE?si=rDuPUXdeyZUT_Lde" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+
+  <main>
+    <div class="book-card">
+      <h3>Starter</h3>
+      <p> 3 Hours</p>
+      <ul>
+        <li>Min. Deposit: $300</li>
+        <li>Max. Deposit: $1000</li>
+        <li>$600 min. return</li>
+        <li>$1,500 max. return</li>
+        <li>Welcome bonus: $10</li>
+      </ul>
+      <button class="button">Trade now</button>
+    </div>
+    <div class="book-card">
+      <h3>Premium</h3>
+      <p>2 Days</p>
+      <ul>
+        <li>Min. Deposit: $1,000</li>
+        <li>Max. Deposit: $3,000</li>
+        <li>$1,800 min. return</li>
+        <li>$3,000 max. return</li>
+        <li>Welcome bonus: $50</li>
+      </ul>
+      <button class="button">Trade now</button>
+    </div>
+    <div class="book-card">
+      <h3>Professional</h3>
+      <p>5 Days</p>
+      <ul>
+        <li>Min. Deposit: $3,000</li>
+        <li>Max. Deposit: $10,000</li>
+        <li>$15,000 min. return</li>
+        <li>$25,000 max. return</li>
+        <li>Welcome bonus: $100</li>
+      </ul>
+      <button class="button">Trade now</button>
+    </div>
+    <div class="book-card">
+      <h3>Heroic plan</h3>
+      <p>48 Hours</p>
+      <ul>
+        <li>Min. Deposit: $3,000</li>
+        <li>Max. Deposit: $10,000</li>
+        <li>$15,000 min. return</li>
+        <li>$25,000 max. return</li>
+        <li>Welcome bonus: $100</li>
+      </ul>
+      <button class="button">Trade now</button>
+    </div>
+  </main>
+
+  <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+  {
+  "width": "100%",
+  "height": 550,
+  "defaultColumn": "overview",
+  "screener_type": "crypto_mkt",
+  "displayCurrency": "USD",
+  "colorTheme": "dark",
+  "locale": "en"
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
+
+ <div style="background-color: rgb(1, 1, 34) ; margin-top: 30px; margin-bottom: 20px; color:white; min-width: fit-content; padding: 10px; align-content: center;">
+  
+  <h1 style="margin-bottom: 20px; text-align: center;">The best trade and investment for you</h1>
+
+  <figure class="fig">
+    <img src="02.jpg" class="image">
+    <figcaption ></figcaption>
+  </figure>
+
+  <div>
+    <p style="text-align:justify;">We are committed to empowering individuals and institutions to grow their wealth through smart, strategic investment solutions. With years of experience in the financial markets and a deep understanding of global trends, we provide tailored investment opportunities designed to meet the unique goals of each client. Our team combines expertise, integrity, and innovation to navigate the complexities of today’s economy and maximize your investment potential.</p>
+    <br>
+    <button  onclick="openModal('signupModal')" style="text-align:center; color: rgb(19, 10, 104);" > <h1> Get started now</h1></button>
+  </div>
+
+</div>
+
+
+<!-- Footer section -->
+    <footer>
+        <!-- Contact Info -->
+        <div class="footer-section">
+            <h3>Contact Information</h3>
+            <a href="tel:+2348082515957">
+                <i class="fa fa-phone"></i> +234-808-251-5957</a>
+            <a href="tel:+2348112907916">
+                <i class="fa fa-phone"></i> +234-811-290-7916</a>
+            <a href="mailto:support@tech.com">
+                <i class="fa fa-envelope"></i> info@fluxcryptofx.online</a>
+        </div>
+
+        <!-- Office Location -->
+        <div class="footer-section">
+            <h3>Office Location</h3>
+            <p><i class="fa fa-map-marker"></i> 123 Main street, Miami,<br> Florida, United States</p>
+        </div>
+
+        <!-- Social Media Handles -->
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <a href="#" target="_blank">
+                <i class="fa fa-facebook"></i> Facebook
+            </a>
+            <a href="#" target="_blank">
+                <i class="fa fa-twitter"></i> Twitter
+            </a>
+            <a href="#" target="_blank">
+                <i class="fa fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="#" target="_blank">
+                <i class="fa fa-instagram"></i> Instagram
+            </a>
+            <a href="#" target="_blank">
+                <i class="fa fa-whatsapp"></i> Whataspp
+            </a>
+        </div>
+    </footer>
+
+  <script src="script.js"></script>
+  
+  
+ <script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

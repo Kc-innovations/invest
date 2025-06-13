@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Signup & Login Modal</title>
+  <link rel="stylesheet" ref="style.css">
+  <style>
+    body { font-family: Arial, sans-serif; }
+    button { padding: 10px 20px; margin: 10px; cursor: pointer; }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+      background: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 400px;
+      position: relative;
+    }
+    .modal-content input, select {
+      width: 100%; padding: 8px; margin: 8px 0;
+    }
+    .close { position: absolute; top: 10px; right: 15px; font-size: 20px; cursor: pointer; }
+    .link { text-align: right; font-size: 0.9em; color: blue; cursor: pointer; }
+    .error { color: red; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+
+<button onclick="openModal('signupModal')">Sign Up</button>
+<button onclick="openModal('loginModal')">Login</button>
+
+<!-- SIGNUP MODAL -->
+<div id="signupModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('signupModal')">&times;</span>
+    <h3>Sign Up</h3>
+    <form id="signupForm">
+      <input name="name" placeholder="Full Name" required />
+      <input name="phone" placeholder="Phone Number" required />
+      <select name="nationality" required>
+        <option value="">Select Nationality</option>
+        <option>Nigeria</option><option>Ghana</option>
+        <option>Kenya</option><option>South Africa</option>
+      </select>
+      <input name="email" type="email" placeholder="Email" required />
+      <input name="password" type="password" placeholder="Password" required />
+      <input name="confirmPassword" type="password" placeholder="Confirm Password" required />
+      <div class="error" id="signupError"></div>
+      <button type="submit">Create Account</button>
+    </form>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('loginModal')">&times;</span>
+    <h3>Login</h3>
+    <form id="loginForm">
+      <input name="email" type="email" placeholder="Email" required />
+      <input name="password" type="password" placeholder="Password" required />
+      <div class="link" onclick="alert('Redirect to recovery')">Forgot Password?</div>
+      <div class="error" id="loginError"></div>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function openModal(id) {
+  document.getElementById(id).style.display = "block";
+}
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+}
+window.onclick = function(e) {
+  if (e.target.classList.contains('modal')) e.target.style.display = "none";
+}
+
+// Form submit helper
+async function sendData(url, data) {
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(data)
+  });
+  return res.json();
+}
+
+// Signup form
+document.getElementById("signupForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  const f = this;
+  const errorBox = document.getElementById("signupError");
+
+  const data = {
+    name: f.name.value.trim(),
+    phone: f.phone.value.trim(),
+    nationality: f.nationality.value,
+    email: f.email.value.trim(),
+    password: f.password.value,
+    confirmPassword: f.confirmPassword.value
+  };
+
+  if (data.password !== data.confirmPassword) {
+    errorBox.textContent = "Passwords do not match.";
+    return;
+  }
+
+  try {
+    const res = await sendData("signup.php", data);
+    if (res.success) {
+      alert(res.message);
+      f.reset();
+      closeModal('signupModal');
+    } else {
+      errorBox.textContent = res.message;
+    }
+  } catch {
+    errorBox.textContent = "Server error. Try again.";
+  }
+});
+
+// Login form
+document.getElementById("loginForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  const f = this;
+  const errorBox = document.getElementById("loginError");
+
+  const data = {
+    email: f.email.value.trim(),
+    password: f.password.value
+  };
+
+  try {
+    const res = await sendData("login.php", data);
+    if (res.success) {
+      alert(res.message);
+      f.reset();
+      closeModal('loginModal');
+    } else {
+      errorBox.textContent = res.message;
+    }
+  } catch {
+    errorBox.textContent = "Server error. Try again.";
+  }
+});
+</script>
+
+</body>
+</html>
